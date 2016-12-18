@@ -2028,7 +2028,13 @@ fb-watchman@^1.8.0, fb-watchman@^1.9.0:
   dependencies:
     bser "^1.0.2"
 
-fbjs@^0.8.1, fbjs@^0.8.4:
+fbemitter@^2.0.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/fbemitter/-/fbemitter-2.1.1.tgz#523e14fdaf5248805bb02f62efc33be703f51865"
+  dependencies:
+    fbjs "^0.8.4"
+
+fbjs@^0.8.0, fbjs@^0.8.1, fbjs@^0.8.4:
   version "0.8.6"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.6.tgz#7eb67d6986b2d5007a9b6e92e0e7cb6f75cad290"
   dependencies:
@@ -2121,6 +2127,13 @@ flat-cache@^1.2.1:
 flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
+
+flux@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/flux/-/flux-3.1.2.tgz#8c170addf95b8cb2febb3ddd640aa3e24505762f"
+  dependencies:
+    fbemitter "^2.0.0"
+    fbjs "^0.8.0"
 
 for-in@^0.1.5:
   version "0.1.6"
