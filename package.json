@@ -15,7 +15,8 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "fs": "^0.0.1-security",
-    "webpack": "^1.14.0"
+    "webpack": "^1.14.0",
+    "websocket": "^1.0.23"
   },
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",

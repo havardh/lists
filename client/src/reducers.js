@@ -1,6 +1,5 @@
 import _ from 'lodash';
 
-import {guid} from './util';
 import {
   ADD,
   BUY,
@@ -13,13 +12,7 @@ import {
 function reduceItem(state, action) {
   switch (action.type) {
     case ADD:
-      return {
-        id: guid(),
-        name: action.data.name,
-        added: new Date(),
-        bought: null,
-        deleted: null
-      };
+      return action.data.item;
     case BUY:
       return {...state, bought: new Date()};
     case DELETE:

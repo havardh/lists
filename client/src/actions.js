@@ -1,5 +1,8 @@
 import Dispatcher from './dispatcher';
 
+import {send} from './websocket';
+import {guid} from './util';
+
 export const RECEIVE = "/receive";
 export const ADD = "/add";
 export const BUY = "/buy";
@@ -8,43 +11,56 @@ export const DELETE_DELETED = "/delete/deleted";
 export const UNDO_DELETE = "/undo/delete";
 export const UNDO_BUY = "/undo/buy";
 
+function sendAndDispatchResponse(action) {
+  send(action).then((response) => Dispatcher.dispatch(response));
+}
+
 export function add(name) {
-  Dispatcher.dispatch({
+
+  const item = {
+    id: guid(),
+    name,
+    added: new Date(),
+    bought: null,
+    deleted: null
+  };
+
+  sendAndDispatchResponse({
     type: ADD,
-    data: {name}
+    data: {item}
   });
 }
 
 export function buy(id) {
-  Dispatcher.dispatch({
+  sendAndDispatchResponse({
     type: BUY,
     data: {id}
   })
 }
 
 export function del(id) {
-  Dispatcher.dispatch({
+  sendAndDispatchResponse({
     type: DELETE,
     data: {id}
   });
 }
 
 export function undoDelete(id) {
-  Dispatcher.dispatch({
+  sendAndDispatchResponse({
     type: UNDO_DELETE,
     data: {id}
   });
 }
 
 export function undoBuy(id) {
-  Dispatcher.dispatch({
+  sendAndDispatchResponse({
     type: UNDO_BUY,
     data: {id}
   });
 }
 
 export function delDeleted(id) {
-  Dispatcher.dispatch({
+  sendAndDispatchResponse({
     type: DELETE_DELETED,
     data: {id}
   });

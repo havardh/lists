@@ -14,6 +14,7 @@ class Store extends ReduceStore {
   }
 
   reduce(state, action) {
+    console.log(state);
     return reduceList(state, action);
   }
 }

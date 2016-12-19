@@ -2,6 +2,7 @@ require('babel-core/register');
 
 import express from 'express';
 import api from './server/src/api';
+import socket from './server/src/socket';
 
 const app = express();
 
