@@ -14,7 +14,7 @@ class ToBuy extends Component {
   render() {
     return (
       <div>
-        <h3>Kjøp</h3>
+        <h3>Kjøps</h3>
         <ul>
           {this.props.list.map(item =>
             <BuyItem
