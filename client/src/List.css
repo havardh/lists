@@ -1,0 +1,27 @@
+ul.list {
+  padding: 0;
+  list-style-type: none;
+}
+
+li.list-item {
+  margin: 5px;
+  height: 40px;
+}
+
+li.list-item div {
+  display: inline-block;
+  text-align: left;
+  top: 10px;
+  height: 40px;
+  width: 60%
+}
+
+button.item {
+  width: 15%;
+  height: 40px;
+  float: right;
+}
+
+.hidden {
+  visibility: hidden;
+}

@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import './List.css';
 
 const BuyItem = ({item, del, buy}) => (
-  <li>
-    {item.name}
-    <button onClick={() => del(item.id)}>Slett</button>
-    <button onClick={() => buy(item.id)}>Kjøp</button>
+  <li className="list-item">
+    <div>- {item.name}</div>
+    <button className="item" onClick={() => buy(item.id)}>Kjøp</button>
+    <button className="item" onClick={() => del(item.id)}>Slett</button>
   </li>
 );
 
 class ToBuy extends Component {
-
   render() {
     return (
       <div>
         <h3>Kjøp</h3>
-        <ul>
+        <ul className="list">
           {this.props.list.map(item =>
             <BuyItem
               key={item.id}

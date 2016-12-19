@@ -1,0 +1,14 @@
+div.add-item {
+  padding: 0px;
+  margin: 0px;
+}
+
+input.add-item {
+  width: 75%;
+  height: 40px;
+}
+
+button.add-item {
+  width: 20%;
+  height: 40px;
+}

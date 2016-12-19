@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './AddItem.css';
 
 class AddItem extends Component {
 
@@ -18,13 +19,15 @@ class AddItem extends Component {
 
   render() {
     return (
-      <div>
+      <div className="add-item">
         <input
+          className="add-item"
           value={this.state.name}
           onChange={this.handleChange}
           placeholder=""
         />
         <button
+          className="add-item"
           onClick={() => this.add(this.state.name)}
         >
           Legg til
