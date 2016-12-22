@@ -10,7 +10,7 @@ class Store extends ReduceStore {
   }
 
   getInitialState() {
-    return []; JSON.parse(localStorage.getItem('list') || "[]");
+    return [];
   }
 
   reduce(state, action) {
