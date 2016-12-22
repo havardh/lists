@@ -8,19 +8,12 @@ let connections = [];
 const actions = [];
 
 async function handleMessage(ip, action, connection) {
-  if (action.type == '/FETCH_ALL_ACTIONS') {
-    const actions = await Store.all();
-    for (let action of actions) {
-      connection.send(JSON.stringify(action));
-    }
-  } else {
-    console.log('Publish message, (connections=', connections.length);
-    Store.add(action);
-    actions.push(action);
-    for (let con of connections) {
-      if (con != connection) {
-        con.send(JSON.stringify(action));
-      }
+  console.log('Publish message, (connections=', connections.length);
+  Store.add(action);
+  actions.push(action);
+  for (let con of connections) {
+    if (con != connection) {
+      con.send(JSON.stringify(action));
     }
   }
 }

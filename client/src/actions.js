@@ -1,6 +1,6 @@
-import Dispatcher from './dispatcher';
+import {dispatch} from './dispatcher';
 
-import {send} from './api';
+import {send, fetchAll} from './api';
 import * as Creators from './creators';
 
 export const RECEIVE = "/receive";
@@ -11,14 +11,18 @@ export const DELETE_DELETED = "/delete/deleted";
 export const UNDO_DELETE = "/undo/delete";
 export const UNDO_BUY = "/undo/buy";
 
-function wrap_action(creator) {
-  return async arg =>
-    Dispatcher.dispatch(await send(creator(arg)));
+function wrapAction(creator) {
+  return async arg => dispatch(await send(creator(arg)));
 }
 
-export const add = wrap_action(Creators.add);
-export const buy = wrap_action(Creators.buy);
-export const del = wrap_action(Creators.del);
-export const undoDelete = wrap_action(Creators.undoDelete);
-export const undoBuy = wrap_action(Creators.undoBuy);
-export const delDeleted = wrap_action(Creators.delDeleted);
+export async function initialize() {
+  const actions = await fetchAll();
+  actions.map(dispatch);
+}
+
+export const add = wrapAction(Creators.add);
+export const buy = wrapAction(Creators.buy);
+export const del = wrapAction(Creators.del);
+export const undoDelete = wrapAction(Creators.undoDelete);
+export const undoBuy = wrapAction(Creators.undoBuy);
+export const delDeleted = wrapAction(Creators.delDeleted);

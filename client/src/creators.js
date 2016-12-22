@@ -31,8 +31,8 @@ export function add(name) {
   return action(ADD, {item});
 }
 
-export const buy = (id) => (action(BUY, {id}))
-export const del = (id) => (action(DELETE, {id}));
-export const undoDelete = (id) => (action(UNDO_DELETE, {id}));
-export const undoBuy = (id) => (action(UNDO_BUY, {id}));
-export const delDeleted = (id) => (action(DELETE_DELETED, {id}));
+export const buy = (id) => action(BUY, {id});
+export const del = (id) => action(DELETE, {id});
+export const undoDelete = (id) => action(UNDO_DELETE, {id});
+export const undoBuy = (id) => action(UNDO_BUY, {id});
+export const delDeleted = (id) => action(DELETE_DELETED, {id});

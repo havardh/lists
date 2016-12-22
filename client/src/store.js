@@ -1,12 +1,12 @@
 import _ from "lodash";
 import {ReduceStore} from 'flux/utils';
 
-import Dispatcher from './dispatcher';
+import {dispatcher} from './dispatcher';
 import {reduceList} from './reducers';
 
 class Store extends ReduceStore {
   constructor() {
-    super(Dispatcher);
+    super(dispatcher);
   }
 
   getInitialState() {

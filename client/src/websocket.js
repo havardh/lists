@@ -11,8 +11,6 @@ function onError(error) {
 
 function onOpen() {
   console.log('Websocket connection is open');
-
-  send({type: '/FETCH_ALL_ACTIONS'});
 };
 
 function onClose() {
