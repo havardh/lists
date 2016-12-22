@@ -39,7 +39,7 @@ export function reduceList(state, action) {
       const n = state.length;
 
       return [
-        ...state.slice(0, Math.max(i-1, 0)),
+        ...state.slice(0, Math.max(i, 0)),
         reduceItem(state[i], action),
         ...state.slice(Math.min(i+1, n), n)
       ];
