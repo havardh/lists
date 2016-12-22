@@ -1,18 +1,21 @@
 import * as websocket from 'websocket';
 import http from 'http';
+import * as Store from './store';
 
 const WebSocketServer = websocket.server;
 
 let connections = [];
 const actions = [];
 
-function handleMessage(ip, action, connection) {
+async function handleMessage(ip, action, connection) {
   if (action.type == '/FETCH_ALL_ACTIONS') {
+    const actions = await Store.all();
     for (let action of actions) {
       connection.send(JSON.stringify(action));
     }
   } else {
     console.log('Publish message, (connections=', connections.length);
+    Store.add(action);
     actions.push(action);
     for (let con of connections) {
       if (con != connection) {

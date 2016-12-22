@@ -8,6 +8,10 @@ import {
 } from './actions';
 import {guid} from './util';
 
+function timestamp() {
+  return new Date().getTime();
+}
+
 function createItem(name) {
   return {
     id: guid(),
@@ -18,13 +22,17 @@ function createItem(name) {
   };
 }
 
-export function add(name) {
-  const item = createItem(name);
-  return {type: ADD, data: {item}};
+function action(type, data) {
+  return {type, data, guid: guid(), timestamp: timestamp()};
 }
 
-export const buy = (id) => ({type: BUY, data: {id}})
-export const del = (id) => ({type: DELETE, data: {id}});
-export const undoDelete = (id) => ({type: UNDO_DELETE, data: {id}});
-export const undoBuy = (id) => ({type: UNDO_BUY, data: {id}});
-export const delDeleted = (id) => ({type: DELETE_DELETED, data: {id}});
+export function add(name) {
+  const item = createItem(name);
+  return action(ADD, {item});
+}
+
+export const buy = (id) => (action(BUY, {id}))
+export const del = (id) => (action(DELETE, {id}));
+export const undoDelete = (id) => (action(UNDO_DELETE, {id}));
+export const undoBuy = (id) => (action(UNDO_BUY, {id}));
+export const delDeleted = (id) => (action(DELETE_DELETED, {id}));

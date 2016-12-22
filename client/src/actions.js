@@ -1,6 +1,6 @@
 import Dispatcher from './dispatcher';
 
-import * as Websocket from './websocket';
+import {send} from './api';
 import * as Creators from './creators';
 
 export const RECEIVE = "/receive";
@@ -12,9 +12,8 @@ export const UNDO_DELETE = "/undo/delete";
 export const UNDO_BUY = "/undo/buy";
 
 function wrap_action(creator) {
-  return arg =>
-    Websocket.send(creator(arg))
-      .then((response) => Dispatcher.dispatch(response));
+  return async arg =>
+    Dispatcher.dispatch(await send(creator(arg)));
 }
 
 export const add = wrap_action(Creators.add);
