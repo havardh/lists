@@ -9,7 +9,7 @@ const app = express();
 app.set('port', (process.env.PORT || 3001));
 
 if (process.env.NODE_ENV == 'production') {
-  app.use(exress.static('client/build'));
+  app.use(express.static('client/build'));
 }
 
 app.all('*', (req, res, next) => {
