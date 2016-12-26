@@ -14,11 +14,22 @@ const BuyItem = ({item, undo}) => (
 
 class ToBuy extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {isVisible: false};
+  }
+
+  toggle = () => {
+    this.setState(({isVisible}) => ({
+      isVisible: !isVisible,
+    }));
+  }
+
   render() {
     return (
       <div>
-        <h3>Kjøpt</h3>
-        <ul className="list">
+        <h3 onClick={this.toggle}>Kjøpt</h3>
+        {this.state.isVisible && <ul className="list">
           {this.props.list.map(item =>
             <BuyItem
               key={item.id}
@@ -26,7 +37,7 @@ class ToBuy extends Component {
               undo={this.props.undo}
             />
           )}
-        </ul>
+        </ul>}
       </div>
     );
   }
