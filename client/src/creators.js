@@ -1,11 +1,4 @@
-import {
-  ADD,
-  BUY,
-  DELETE,
-  DELETE_DELETED,
-  UNDO_BUY,
-  UNDO_DELETE
-} from './actions';
+import {ADD, BUY, DELETE, DELETE_DELETED, UNDO_BUY, UNDO_DELETE} from './constants';
 import {guid} from './util';
 
 function timestamp() {

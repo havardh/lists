@@ -1,13 +1,14 @@
 import _ from 'lodash';
 
 import {
+  RECEIVE,
   ADD,
   BUY,
   DELETE,
   DELETE_DELETED,
   UNDO_BUY,
   UNDO_DELETE
-} from './actions';
+} from './constants';
 
 function reduceItem(state, action) {
   switch (action.type) {
@@ -28,6 +29,8 @@ function reduceItem(state, action) {
 
 export function reduceList(state, action) {
   switch (action.type) {
+    case RECEIVE:
+      return action.data.state;
     case ADD:
       return _.concat(state, reduceItem(null, action));
     case BUY:
